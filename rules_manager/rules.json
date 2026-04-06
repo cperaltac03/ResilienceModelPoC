@@ -1,0 +1,75 @@
+[
+  {
+    "if": {
+      "category": "NETWORK",
+      "severity": "LOW"
+    },
+    "then": {
+      "action": "retry",
+      "max_attempts": 3,
+      "backoff_seconds": 2
+    }
+  },
+  {
+    "if": {
+      "category": "NETWORK",
+      "severity": "MEDIUM"
+    },
+    "then": {
+      "action": "retry",
+      "max_attempts": 5,
+      "backoff_seconds": 3
+    }
+  },
+  {
+    "if": {
+      "category": "NETWORK",
+      "severity": "HIGH"
+    },
+    "then": {
+      "action": "cache_clean"
+    }
+  },
+  {
+    "if": {
+      "category": "MISSING_ARTIFACT"
+    },
+    "then": {
+      "action": "dependency_substitution"
+    }
+  },
+  {
+    "if": {
+      "category": "VERSION_CONFLICT"
+    },
+    "then": {
+      "action": "dependency_substitution"
+    }
+  },
+  {
+    "if": {
+      "category": "INTEGRITY"
+    },
+    "then": {
+      "action": "dependency_substitution"
+    }
+  },
+  {
+    "if": {
+      "criticality": "CRITICAL"
+    },
+    "then": {
+      "action": "dependency_substitution"
+    }
+  },
+  {
+    "if": {
+      "severity": "LOW"
+    },
+    "then": {
+      "action": "retry",
+      "max_attempts": 2,
+      "backoff_seconds": 1
+    }
+  }
+]

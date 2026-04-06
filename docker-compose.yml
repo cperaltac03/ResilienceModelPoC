@@ -1,0 +1,220 @@
+version: "3.9"
+
+networks:
+  resilience_net:
+    driver: bridge
+
+volumes:
+  rabbitmq_data:
+  elastic_data:
+  postgres_data:
+
+services:
+
+  # =========================
+  # Infraestructura base
+  # =========================
+
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - resilience_net
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+    networks:
+      - resilience_net
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_DB: resilience
+      POSTGRES_USER: resilience_user
+      POSTGRES_PASSWORD: resilience_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - resilience_net
+
+  # =========================
+  # Model services
+  # =========================
+
+  observability:
+    build:
+      context: .
+      dockerfile: ./observability/Dockerfile
+    container_name: observability
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_started
+    networks:
+      - resilience_net
+
+  failure_detector:
+    build:
+      context: .
+      dockerfile: ./failure_detector/Dockerfile
+    container_name: failure_detector
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+    depends_on:
+      - rabbitmq
+      - observability
+    networks:
+      - resilience_net
+
+  failure_classifier:
+    build:
+      context: .
+      dockerfile: ./failure_classifier/Dockerfile
+    container_name: failure_classifier
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      failure_detector:
+        condition: service_started
+    networks:
+      - resilience_net
+
+  impact_evaluator:
+    build:
+      context: .
+      dockerfile: ./impact_evaluator/Dockerfile
+    container_name: impact_evaluator
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      failure_classifier:
+        condition: service_started
+    networks:
+      - resilience_net
+
+  decision_engine:
+    build:
+      context: .
+      dockerfile: ./decision_engine/Dockerfile
+    container_name: decision_engine
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RULES_SERVICE_URL: http://rules_manager:8000
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      rules_manager:
+        condition: service_started
+      impact_evaluator:
+        condition: service_started
+    networks:
+      - resilience_net
+
+  rules_manager:
+    build:
+      context: .
+      dockerfile: ./rules_manager/Dockerfile
+    container_name: rules_manager
+    ports:
+      - "8000:8000"
+    environment:
+      RULES_FILE: /app/rules.json
+    volumes:
+      - ./rules_manager/rules.json:/app/rules.json
+    networks:
+      - resilience_net
+
+  failure_solver:
+    build:
+      context: .
+      dockerfile: ./failure_solver/Dockerfile
+    container_name: failure_solver
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: resilience
+      POSTGRES_USER: resilience_user
+      POSTGRES_PASSWORD: resilience_pass
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      postgres:
+        condition: service_started
+      decision_engine:
+        condition: service_started
+    networks:
+      - resilience_net
+
+  event_registry:
+    build:
+      context: .
+      dockerfile: ./event_registry/Dockerfile
+    container_name: event_registry
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: resilience
+      POSTGRES_USER: resilience_user
+      POSTGRES_PASSWORD: resilience_pass
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      postgres:
+        condition: service_started
+    networks:
+      - resilience_net
+
+  # =========================
+  # Simulador de Pipeline CI/CD
+  # =========================
+
+  pipeline_simulator:
+    build:
+      context: .
+      dockerfile: ./pipeline_simulator/Dockerfile
+    container_name: pipeline_simulator
+    environment:
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      observability:
+        condition: service_started
+    networks:
+      - resilience_net

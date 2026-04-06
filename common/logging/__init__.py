@@ -1,0 +1,1 @@
+from .elastic_logger import ElasticLogger, log_json

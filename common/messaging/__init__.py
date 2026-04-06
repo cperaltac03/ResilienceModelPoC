@@ -1,0 +1,1 @@
+from .rabbitmg_client import RabbitMQClient, ConsumeSpec
