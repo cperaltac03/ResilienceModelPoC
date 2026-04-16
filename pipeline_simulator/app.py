@@ -32,11 +32,26 @@ def generate_event() -> Dict[str, Any]:
 
     if failed:
         error = random.choice([
-            "timeout while fetching artifact",
-            "connection reset by peer",
-            "404 not found in repository",
-            "version conflict detected",
-            "checksum mismatch",
+            "ReadTimeoutError: HTTPSConnectionPool(host='pypi.org', port=443): Read timed out.",
+            "Failed to transfer file: Connect timed out",
+            "Could not GET 'https://repo.maven.apache.org/...'. Read timed out",
+            "npm ERR! network timeout at: https://registry.npmjs.org/lodash",
+            "ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+            "Connection reset -> [Help 1]",
+            "Connection reset by peer",
+            "npm ERR! network request to https://registry.npmjs.org/react failed, reason: socket hang up",
+            "ERROR: Could not find a version that satisfies the requirement package-name (from versions: none)",
+            "Could not find artifact org.example:lib:jar:1.0 in central",
+            "Could not find org.example:lib:1.0.",
+            "npm ERR! 404 Not Found - GET https://registry.npmjs.org/package-name - Not found",
+            "ERROR: Cannot install packageA and packageB because these package versions have conflicting dependencies.",
+            "Dependency convergence error for org.example:lib",
+            "Conflict found for module 'org.example:lib'. Versions 1.0 and 2.0",
+            "npm ERR! ERESOLVE unable to resolve dependency tree",
+            "ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE.",
+            "Checksum validation failed, expected <hash> but is <hash>",
+            "Checksum failed for file 'lib-1.0.jar'",
+            "npm ERR! Integrity checksum failed when using sha512",
         ])
         status = "failed"
     else:

@@ -19,14 +19,16 @@ class FailureClassifier:
     def classify(self, error: Optional[str]) -> Classification:
         e = (error or "").lower()
 
-        if "timeout" in e or "connection" in e or "reset" in e:
-            category = "NETWORK"
-        elif "404" in e or "not found" in e:
-            category = "MISSING_ARTIFACT"
-        elif "version conflict" in e or "conflict" in e:
-            category = "VERSION_CONFLICT"
-        elif "checksum" in e or "hash mismatch" in e:
-            category = "INTEGRITY"
+        if "timeout" in e or "timed out" in e or "connect timed out" in e or "network timeout" in e:
+            category = "Timeout"
+        elif "connection aborted" in e or "connection reset" in e or "reset by peer" in e or "socket hang up" in e:
+            category = "Connection lost"
+        elif "404" in e or "not found" in e or "could not find" in e:
+            category = "404"
+        elif "version conflict" in e or "conflicting dependencies" in e or "dependency convergence" in e or "conflict found" in e or "unable to resolve dependency tree" in e or "eresolve" in e:
+            category = "Version conflict"
+        elif "checksum" in e or "integrity checksum failed" in e or "hash mismatch" in e or "do not match the hashes" in e:
+            category = "Checksum mismatch"
         else:
             category = "UNKNOWN"
 
@@ -36,9 +38,10 @@ class FailureClassifier:
     @staticmethod
     def base_severity(category: str) -> str:
         return {
-            "NETWORK": "MEDIUM",
-            "MISSING_ARTIFACT": "HIGH",
-            "VERSION_CONFLICT": "HIGH",
-            "INTEGRITY": "HIGH",
+            "Timeout": "MEDIUM",
+            "Connection lost": "MEDIUM",
+            "404": "HIGH",
+            "Version conflict": "HIGH",
+            "Checksum mismatch": "HIGH",
             "UNKNOWN": "LOW",
         }.get(category, "LOW")
