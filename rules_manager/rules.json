@@ -1,75 +1,48 @@
 [
   {
     "if": {
-      "category": "NETWORK",
-      "severity": "LOW"
+      "category": "Timeout"
     },
     "then": {
-      "action": "retry",
+      "action": "increase_timeout_and_retry",
       "max_attempts": 3,
-      "backoff_seconds": 2
+      "backoff_seconds": 5
     }
   },
   {
     "if": {
-      "category": "NETWORK",
-      "severity": "MEDIUM"
+      "category": "Connection lost"
     },
     "then": {
-      "action": "retry",
-      "max_attempts": 5,
+      "action": "change_mirror_and_retry",
+      "max_attempts": 2,
       "backoff_seconds": 3
     }
   },
   {
     "if": {
-      "category": "NETWORK",
-      "severity": "HIGH"
+      "category": "404"
     },
     "then": {
-      "action": "cache_clean"
+      "action": "validate_dependency_and_fallback"
     }
   },
   {
     "if": {
-      "category": "MISSING_ARTIFACT"
+      "category": "Version conflict"
     },
     "then": {
-      "action": "dependency_substitution"
+      "action": "finalize_pipeline"
     }
   },
   {
     "if": {
-      "category": "VERSION_CONFLICT"
+      "category": "Checksum mismatch"
     },
     "then": {
-      "action": "dependency_substitution"
-    }
-  },
-  {
-    "if": {
-      "category": "INTEGRITY"
-    },
-    "then": {
-      "action": "dependency_substitution"
-    }
-  },
-  {
-    "if": {
-      "criticality": "CRITICAL"
-    },
-    "then": {
-      "action": "dependency_substitution"
-    }
-  },
-  {
-    "if": {
-      "severity": "LOW"
-    },
-    "then": {
-      "action": "retry",
-      "max_attempts": 2,
-      "backoff_seconds": 1
+      "action": "clean_cache_and_retry",
+      "max_attempts": 1,
+      "backoff_seconds": 2
     }
   }
 ]

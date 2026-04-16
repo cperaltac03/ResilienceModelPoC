@@ -63,6 +63,37 @@ def execute_action(decision: Dict[str, Any]) -> Dict[str, Any]:
         # Para prototipo: asumimos éxito en retry
         return {"action": action, "attempts": attempts, "result": "success"}
 
+    if action == "increase_timeout_and_retry":
+        attempts = int((decision or {}).get("max_attempts", 3))
+        backoff = int((decision or {}).get("backoff_seconds", 5))
+        time.sleep(min(3, backoff))
+        # Simular incrementar timeout y retry
+        return {"action": action, "attempts": attempts, "timeout_increased": True, "result": "success"}
+
+    if action == "change_mirror_and_retry":
+        attempts = int((decision or {}).get("max_attempts", 2))
+        backoff = int((decision or {}).get("backoff_seconds", 3))
+        time.sleep(min(3, backoff))
+        # Simular cambiar mirror y retry
+        return {"action": action, "attempts": attempts, "mirror_changed": True, "result": "success"}
+
+    if action == "validate_dependency_and_fallback":
+        time.sleep(1)
+        # Simular validar dependencia y fallback
+        return {"action": action, "validated": True, "fallback_used": True, "result": "success"}
+
+    if action == "finalize_pipeline":
+        time.sleep(1)
+        # Simular finalizar pipeline
+        return {"action": action, "pipeline_finalized": True, "result": "failed"}
+
+    if action == "clean_cache_and_retry":
+        attempts = int((decision or {}).get("max_attempts", 1))
+        backoff = int((decision or {}).get("backoff_seconds", 2))
+        time.sleep(min(3, backoff))
+        # Simular limpiar cache y retry
+        return {"action": action, "attempts": attempts, "cache_cleaned": True, "result": "success"}
+
     if action == "cache_clean":
         time.sleep(1)
         return {"action": action, "result": "success"}
