@@ -1,0 +1,38 @@
+
+=================================== ERRORS ====================================
+____________ ERROR collecting tests/test_failure_solver_action.py _____________
+ImportError while importing test module 'C:\Users\cepc9\Documents\PIA01\PoC\tests\test_failure_solver_action.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_failure_solver_action.py:1: in <module>
+    from failure_solver.app import execute_action
+failure_solver\app.py:7: in <module>
+    import psycopg2
+E   ModuleNotFoundError: No module named 'psycopg2'
+============================== warnings summary ===============================
+pipeline_simulator\app.py:148
+  C:\Users\cepc9\Documents\PIA01\PoC\pipeline_simulator\app.py:148: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+..\..\..\AppData\Roaming\Python\Python313\site-packages\fastapi\applications.py:4598
+  C:\Users\cepc9\AppData\Roaming\Python\Python313\site-packages\fastapi\applications.py:4598: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)  # ty: ignore[deprecated]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/test_failure_solver_action.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+2 warnings, 1 error in 1.66s

@@ -1,0 +1,480 @@
+﻿failure_detector    | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Error in _create_connection().
+failure_detector    | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Error in _create_connection().
+failure_detector    | Error in _create_connection().
+failure_classifier  | Traceback (most recent call last):
+failure_detector    | Traceback (most recent call last):
+failure_classifier  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_solver      | Traceback (most recent call last):
+failure_detector    |     raise self._reap_last_connection_workflow_error(error)
+failure_solver      |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    | pika.exceptions.AMQPConnectionError
+failure_solver      |     raise self._reap_last_connection_workflow_error(error)
+failure_detector    | {"@timestamp": 1779769378.93092, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 22, "error": ""}
+failure_classifier  |     raise self._reap_last_connection_workflow_error(error)
+failure_detector    | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_classifier  | pika.exceptions.AMQPConnectionError
+failure_detector    | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.8', 40204)>; error=111 (Connection refused)
+failure_classifier  | {"@timestamp": 1779769377.6796935, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 19, "error": ""}
+failure_classifier  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_classifier  | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.10', 34922)>; error=111 (Connection refused)
+failure_classifier  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_classifier  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_detector    | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_classifier  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_solver      | pika.exceptions.AMQPConnectionError
+failure_solver      | {"@timestamp": 1779769377.8133872, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 15, "error": ""}
+failure_classifier  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_detector    | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_detector    | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | Error in _create_connection().
+failure_detector    | Traceback (most recent call last):
+failure_classifier  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_classifier  | Error in _create_connection().
+failure_classifier  | Traceback (most recent call last):
+failure_classifier  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+pipeline_simulator  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+pipeline_simulator  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+pipeline_simulator  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | Error in _create_connection().
+pipeline_simulator  | Traceback (most recent call last):
+pipeline_simulator  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+pipeline_simulator  |     raise self._reap_last_connection_workflow_error(error)
+pipeline_simulator  | pika.exceptions.AMQPConnectionError
+pipeline_simulator  | {"@timestamp": 1779769381.3566968, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 21, "error": ""}
+pipeline_simulator  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+pipeline_simulator  | Socket failed to connect: <socket.socket fd=10, family=2, type=1, proto=6, laddr=('172.18.0.9', 42828)>; error=111 (Connection refused)
+pipeline_simulator  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+pipeline_simulator  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+pipeline_simulator  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+pipeline_simulator  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | Error in _create_connection().
+pipeline_simulator  | Traceback (most recent call last):
+failure_detector    |     raise self._reap_last_connection_workflow_error(error)
+pipeline_simulator  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    | pika.exceptions.AMQPConnectionError
+failure_detector    | {"@timestamp": 1779769379.933677, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 23, "error": ""}
+pipeline_simulator  |     raise self._reap_last_connection_workflow_error(error)
+failure_solver      | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_classifier  |     raise self._reap_last_connection_workflow_error(error)
+failure_solver      | Socket failed to connect: <socket.socket fd=7, family=2, type=1, proto=6, laddr=('172.18.0.13', 59718)>; error=111 (Connection refused)
+failure_solver      | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_solver      | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_solver      | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_solver      | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Error in _create_connection().
+failure_classifier  | pika.exceptions.AMQPConnectionError
+failure_solver      | Traceback (most recent call last):
+failure_solver      |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_detector    | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.8', 40220)>; error=111 (Connection refused)
+failure_detector    | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_detector    | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_classifier  | {"@timestamp": 1779769378.7175019, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 20, "error": ""}
+failure_classifier  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_classifier  | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.10', 34924)>; error=111 (Connection refused)
+failure_classifier  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_detector    | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_solver      |     raise self._reap_last_connection_workflow_error(error)
+failure_detector    | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | pika.exceptions.AMQPConnectionError
+pipeline_simulator  | pika.exceptions.AMQPConnectionError
+failure_detector    | {"@timestamp": 1779769380.943108, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 24, "error": ""}
+failure_classifier  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_detector    | Error in _create_connection().
+failure_classifier  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_solver      | {"@timestamp": 1779769378.82129, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 16, "error": ""}
+failure_classifier  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | {"@timestamp": 1779769382.3610077, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 22, "error": ""}
+pipeline_simulator  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_solver      | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_solver      | Socket failed to connect: <socket.socket fd=7, family=2, type=1, proto=6, laddr=('172.18.0.13', 59726)>; error=111 (Connection refused)
+failure_solver      | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_solver      | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_classifier  | Error in _create_connection().
+failure_classifier  | Traceback (most recent call last):
+failure_classifier  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_classifier  |     raise self._reap_last_connection_workflow_error(error)
+failure_classifier  | pika.exceptions.AMQPConnectionError
+failure_classifier  | {"@timestamp": 1779769379.7198088, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 21, "error": ""}
+failure_classifier  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_classifier  | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.10', 34932)>; error=111 (Connection refused)
+failure_classifier  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_classifier  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_classifier  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_classifier  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Error in _create_connection().
+failure_classifier  | Traceback (most recent call last):
+failure_solver      | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_solver      | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_classifier  |     raise self._reap_last_connection_workflow_error(error)
+failure_classifier  | pika.exceptions.AMQPConnectionError
+failure_classifier  | {"@timestamp": 1779769380.7265108, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 22, "error": ""}
+pipeline_simulator  | Socket failed to connect: <socket.socket fd=10, family=2, type=1, proto=6, laddr=('172.18.0.9', 42836)>; error=111 (Connection refused)
+pipeline_simulator  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+pipeline_simulator  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+pipeline_simulator  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+pipeline_simulator  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Error in _create_connection().
+failure_solver      | Traceback (most recent call last):
+failure_classifier  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+pipeline_simulator  | Error in _create_connection().
+failure_classifier  | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.10', 34938)>; error=111 (Connection refused)
+failure_detector    | Traceback (most recent call last):
+failure_solver      |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_solver      |     raise self._reap_last_connection_workflow_error(error)
+failure_solver      | pika.exceptions.AMQPConnectionError
+failure_classifier  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+pipeline_simulator  | Traceback (most recent call last):
+pipeline_simulator  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+pipeline_simulator  |     raise self._reap_last_connection_workflow_error(error)
+failure_solver      | {"@timestamp": 1779769379.8241315, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 17, "error": ""}
+failure_detector    |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_solver      | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_detector    |     raise self._reap_last_connection_workflow_error(error)
+failure_solver      | Socket failed to connect: <socket.socket fd=7, family=2, type=1, proto=6, laddr=('172.18.0.13', 59738)>; error=111 (Connection refused)
+failure_detector    | pika.exceptions.AMQPConnectionError
+failure_solver      | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_detector    | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_solver      | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_detector    | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.8', 40234)>; error=111 (Connection refused)
+failure_solver      | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_detector    | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_detector    | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_solver      | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_solver      | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_detector    | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_classifier  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Error in _create_connection().
+pipeline_simulator  | pika.exceptions.AMQPConnectionError
+failure_detector    | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | Error in _create_connection().
+failure_detector    | Traceback (most recent call last):
+failure_solver      | Error in _create_connection().
+failure_solver      | Traceback (most recent call last):
+failure_classifier  | Traceback (most recent call last):
+pipeline_simulator  | {"@timestamp": 1779769383.3649948, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 23, "error": ""}
+failure_solver      |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_classifier  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    |     raise self._reap_last_connection_workflow_error(error)
+pipeline_simulator  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+pipeline_simulator  | Socket failed to connect: <socket.socket fd=10, family=2, type=1, proto=6, laddr=('172.18.0.9', 42840)>; error=111 (Connection refused)
+pipeline_simulator  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+pipeline_simulator  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_classifier  |     raise self._reap_last_connection_workflow_error(error)
+failure_classifier  | pika.exceptions.AMQPConnectionError
+failure_classifier  | {"@timestamp": 1779769381.7315352, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 23, "error": ""}
+failure_solver      |     raise self._reap_last_connection_workflow_error(error)
+pipeline_simulator  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_classifier  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_classifier  | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.10', 34952)>; error=111 (Connection refused)
+failure_classifier  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_solver      | pika.exceptions.AMQPConnectionError
+failure_solver      | {"@timestamp": 1779769380.8314695, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 18, "error": ""}
+failure_solver      | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_solver      | Socket failed to connect: <socket.socket fd=7, family=2, type=1, proto=6, laddr=('172.18.0.13', 59744)>; error=111 (Connection refused)
+pipeline_simulator  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | Error in _create_connection().
+failure_classifier  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+pipeline_simulator  | Traceback (most recent call last):
+pipeline_simulator  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+pipeline_simulator  |     raise self._reap_last_connection_workflow_error(error)
+pipeline_simulator  | pika.exceptions.AMQPConnectionError
+pipeline_simulator  | {"@timestamp": 1779769384.3693573, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 24, "error": ""}
+pipeline_simulator  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_classifier  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_classifier  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_detector    | pika.exceptions.AMQPConnectionError
+failure_detector    | {"@timestamp": 1779769381.9474638, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 25, "error": ""}
+failure_detector    | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_solver      | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_solver      | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_solver      | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Error in _create_connection().
+failure_classifier  | Traceback (most recent call last):
+failure_classifier  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_classifier  |     raise self._reap_last_connection_workflow_error(error)
+failure_classifier  | pika.exceptions.AMQPConnectionError
+failure_classifier  | {"@timestamp": 1779769382.7349536, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 24, "error": ""}
+failure_classifier  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+pipeline_simulator  | Socket connected: <socket.socket fd=10, family=2, type=1, proto=6, laddr=('172.18.0.9', 44744), raddr=('172.18.0.5', 5672)>
+failure_solver      | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Error in _create_connection().
+failure_solver      | Traceback (most recent call last):
+failure_solver      |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+pipeline_simulator  | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d75f5c90>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d75f5c90> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>).
+failure_detector    | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.8', 40236)>; error=111 (Connection refused)
+failure_detector    | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_detector    | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_detector    | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_detector    | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      |     raise self._reap_last_connection_workflow_error(error)
+failure_solver      | pika.exceptions.AMQPConnectionError
+failure_solver      | {"@timestamp": 1779769381.8350444, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 19, "error": ""}
+failure_solver      | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_solver      | Socket failed to connect: <socket.socket fd=7, family=2, type=1, proto=6, laddr=('172.18.0.13', 59760)>; error=111 (Connection refused)
+failure_solver      | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_solver      | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_solver      | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_solver      | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d75f5c90> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_classifier  | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.10', 34960)>; error=111 (Connection refused)
+failure_solver      | Error in _create_connection().
+failure_classifier  | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_detector    | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | Error in _create_connection().
+failure_classifier  | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_classifier  | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_classifier  | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_classifier  | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Traceback (most recent call last):
+failure_classifier  | Error in _create_connection().
+failure_classifier  | Traceback (most recent call last):
+failure_classifier  |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_classifier  |     raise self._reap_last_connection_workflow_error(error)
+failure_classifier  | pika.exceptions.AMQPConnectionError
+failure_solver      |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    | Traceback (most recent call last):
+failure_detector    |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    |     raise self._reap_last_connection_workflow_error(error)
+failure_detector    | pika.exceptions.AMQPConnectionError
+failure_detector    | {"@timestamp": 1779769382.954303, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 26, "error": ""}
+failure_detector    | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_detector    | Socket failed to connect: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.8', 40240)>; error=111 (Connection refused)
+pipeline_simulator  | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d75f5c90> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_solver      |     raise self._reap_last_connection_workflow_error(error)
+failure_solver      | pika.exceptions.AMQPConnectionError
+failure_classifier  | {"@timestamp": 1779769383.7416985, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 25, "error": ""}
+failure_solver      | {"@timestamp": 1779769382.8384743, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 20, "error": ""}
+failure_solver      | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_classifier  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_detector    | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+failure_detector    | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_detector    | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_detector    | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_detector    | Error in _create_connection().
+pipeline_simulator  | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d75f5c90> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_classifier  | Socket connected: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.10', 34964), raddr=('172.18.0.5', 5672)>
+pipeline_simulator  | Created channel=1
+failure_detector    | Traceback (most recent call last):
+failure_classifier  | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f374695e690>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f374695e690> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>).
+failure_solver      | Socket failed to connect: <socket.socket fd=7, family=2, type=1, proto=6, laddr=('172.18.0.13', 59774)>; error=111 (Connection refused)
+failure_classifier  | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f374695e690> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_classifier  | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f374695e690> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_classifier  | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f374695e690> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:23:05.384738+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Simulador peri├│dico iniciado", "interval": 15}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:23:05.385979+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-8130", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:23:20.402202+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-3283", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:23:35.407171+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-3653", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:23:50.406986+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-6662", "status": "failed"}
+failure_classifier  | Created channel=1
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:24:05.408392+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-9193", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:24:20.525155+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-8227", "status": "success"}
+failure_solver      | TCP Connection attempt failed: ConnectionRefusedError(111, 'Connection refused'); dest=(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.18.0.5', 5672))
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:24:35.527406+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-5216", "status": "failed"}
+failure_solver      | AMQPConnector - reporting failure: AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused')
+failure_classifier  | {"@timestamp": "2026-05-26T04:23:04.780431+00:00", "level": "INFO", "service": "failure_classifier", "message": "Servicio iniciado"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:23:24.511620+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-3283", "category": "Timeout", "severity": "MEDIUM"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:24:50.524871+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-6423", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:25:05.525934+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-8054", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:25:20.527544+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-4292", "status": "failed"}
+failure_detector    |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    |     raise self._reap_last_connection_workflow_error(error)
+failure_detector    | pika.exceptions.AMQPConnectionError
+failure_detector    | {"@timestamp": 1779769383.9597394, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 27, "error": ""}
+failure_detector    | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_detector    | Socket connected: <socket.socket fd=6, family=2, type=1, proto=6, laddr=('172.18.0.8', 40256), raddr=('172.18.0.5', 5672)>
+failure_solver      | AMQP connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None.
+failure_detector    | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f3aca8ca310>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f3aca8ca310> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>).
+failure_solver      | AMQPConnectionWorkflow - reporting failure: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:25:35.529132+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-6789", "status": "failed"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:23:35.495940+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-3653", "category": "Timeout", "severity": "MEDIUM"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:25:50.528828+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-2108", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:26:05.530768+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-7263", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:26:20.529755+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-7924", "status": "failed"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:23:50.644561+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-6662", "category": "Connection lost", "severity": "MEDIUM"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:24:35.583175+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-5216", "category": "Version conflict", "severity": "HIGH"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:26:35.530996+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-7721", "status": "failed"}
+failure_solver      | Connection workflow failed: AMQPConnectionWorkflowFailed: 1 exceptions in all; last exception - AMQPConnectorSocketConnectError: ConnectionRefusedError(111, 'Connection refused'); first exception - None
+failure_solver      | Error in _create_connection().
+failure_solver      | Traceback (most recent call last):
+failure_detector    | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f3aca8ca310> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_solver      |   File "/usr/local/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+failure_detector    | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f3aca8ca310> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:26:50.528880+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-8508", "status": "failed"}
+failure_solver      |     raise self._reap_last_connection_workflow_error(error)
+failure_classifier  | {"@timestamp": "2026-05-26T04:24:50.590388+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-6423", "category": "Checksum mismatch", "severity": "HIGH"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:27:05.529912+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-9126", "status": "success"}
+failure_detector    | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f3aca8ca310> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:27:20.530313+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-5006", "status": "failed"}
+failure_detector    | Created channel=1
+failure_detector    | {"@timestamp": "2026-05-26T04:23:04.990478+00:00", "level": "INFO", "service": "failure_detector", "message": "Servicio iniciado", "rabbitmq_host": "rabbitmq", "exchange": "resilience", "in_queue": "detector.in", "in_routing_key": "obs.event", "out_routing_key": "failure.detected"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:27:35.531140+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-9820", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:27:50.529060+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-5457", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:28:05.530698+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-6453", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:28:20.529749+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-3959", "status": "failed"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:25:05.570904+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-8054", "category": "Connection lost", "severity": "MEDIUM"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:25:20.585079+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-4292", "category": "Timeout", "severity": "MEDIUM"}
+failure_detector    | {"@timestamp": "2026-05-26T04:23:05.396007+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-8130", "run_id": "c67e57d7-b06e-4deb-a3c8-24dd1d5d0985", "reason": "Ignorado: status != failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:23:22.477013+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-3283", "run_id": "8dc1453f-36e9-456c-96d2-6f5b93c19f63", "error": "npm ERR! network timeout at: https://registry.npmjs.org/lodash", "dependency": "pandas", "version": "3.12.1"}
+failure_detector    | {"@timestamp": "2026-05-26T04:23:35.449896+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-3653", "run_id": "9bde2e54-3a71-4c4c-b2be-ab0b6693c271", "error": "Could not GET 'https://repo.maven.apache.org/...'. Read timed out", "dependency": "pandas", "version": "0.110.0"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:25:35.577817+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-6789", "category": "Version conflict", "severity": "HIGH"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:28:35.530871+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-9634", "status": "failed"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:26:20.577640+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-7924", "category": "Checksum mismatch", "severity": "HIGH"}
+failure_solver      | pika.exceptions.AMQPConnectionError
+failure_solver      | {"@timestamp": 1779769383.8430316, "level": "WARN", "service": "common.rabbitmq", "message": "RabbitMQ no disponible, reintentando...", "attempt": 21, "error": ""}
+failure_detector    | {"@timestamp": "2026-05-26T04:23:50.621449+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-6662", "run_id": "836ec149-d574-4963-9135-43c595643fee", "error": "npm ERR! network request to https://registry.npmjs.org/react failed, reason: socket hang up", "dependency": "pandas", "version": "3.12.1"}
+failure_detector    | {"@timestamp": "2026-05-26T04:24:05.436588+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-9193", "run_id": "328bb426-782f-47d2-93f6-1ab77f0e43d0", "reason": "Ignorado: status != failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:24:20.750625+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-8227", "run_id": "3b402686-7902-4ca5-923d-ceb7417c2aa7", "reason": "Ignorado: status != failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:24:35.560781+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-5216", "run_id": "307e07da-3e7d-4ee8-905f-b1b9b776dd68", "error": "Conflict found for module 'org.example:lib'. Versions 1.0 and 2.0", "dependency": "pandas", "version": "3.12.1"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:26:35.623275+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-7721", "category": "Timeout", "severity": "MEDIUM"}
+failure_solver      | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+failure_solver      | Socket connected: <socket.socket fd=7, family=2, type=1, proto=6, laddr=('172.18.0.13', 59778), raddr=('172.18.0.5', 5672)>
+failure_solver      | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f110512c9d0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f110512c9d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>).
+failure_solver      | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f110512c9d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_solver      | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f110512c9d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_classifier  | {"@timestamp": "2026-05-26T04:26:50.574794+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-8508", "category": "Connection lost", "severity": "MEDIUM"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:27:20.634417+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-5006", "category": "Checksum mismatch", "severity": "HIGH"}
+failure_solver      | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f110512c9d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:28:50.529737+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-6947", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:29:05.531888+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-6049", "status": "failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:24:50.555152+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-6423", "run_id": "b1b2311f-4224-4846-818f-9b1955e3a870", "error": "ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE.", "dependency": "numpy", "version": "0.110.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:25:05.546528+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-8054", "run_id": "269f54b7-8061-4a71-934d-6e6c99532cf9", "error": "npm ERR! network request to https://registry.npmjs.org/react failed, reason: socket hang up", "dependency": "pika", "version": "0.110.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:25:20.557662+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-4292", "run_id": "9cecac6c-c0dd-469c-9a2a-e5dac2bb91c7", "error": "npm ERR! network timeout at: https://registry.npmjs.org/lodash", "dependency": "fastapi", "version": "3.12.1"}
+failure_detector    | {"@timestamp": "2026-05-26T04:25:35.549615+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-6789", "run_id": "5621ab20-fbfd-4032-9868-f16031b00bc0", "error": "npm ERR! ERESOLVE unable to resolve dependency tree", "dependency": "fastapi", "version": "2.31.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:25:50.582188+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-2108", "run_id": "7c451597-8f05-4fa3-b1b2-783055655ac4", "reason": "Ignorado: status != failed"}
+failure_solver      | Created channel=1
+failure_solver      | {"@timestamp": "2026-05-26T04:23:04.871999+00:00", "level": "INFO", "service": "failure_solver", "message": "Servicio iniciado", "postgres_host": "postgres"}
+failure_solver      | {"@timestamp": "2026-05-26T04:23:31.488689+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-3283", "action": "increase_timeout_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:23:38.575144+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-3653", "action": "increase_timeout_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:23:53.776312+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-6662", "action": "change_mirror_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:24:36.635677+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-5216", "action": "finalize_pipeline", "status": "failed"}
+failure_solver      | {"@timestamp": "2026-05-26T04:24:52.643338+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-6423", "action": "clean_cache_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:25:08.628983+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-8054", "action": "change_mirror_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:25:23.649888+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-4292", "action": "increase_timeout_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:25:36.634777+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-6789", "action": "finalize_pipeline", "status": "failed"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:27:35.577764+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-9820", "category": "404", "severity": "HIGH"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:28:05.588059+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-6453", "category": "Connection lost", "severity": "MEDIUM"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:28:20.575636+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-3959", "category": "Connection lost", "severity": "MEDIUM"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:29:20.530644+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-9267", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:29:35.531650+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-4341", "status": "failed"}
+failure_solver      | {"@timestamp": "2026-05-26T04:26:22.646872+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-7924", "action": "clean_cache_and_retry", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:29:50.531946+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-3694", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:30:05.532956+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-6815", "status": "failed"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:28:35.585138+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-9634", "category": "Connection lost", "severity": "MEDIUM"}
+failure_detector    | {"@timestamp": "2026-05-26T04:26:05.551189+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-7263", "run_id": "13fd63f7-82c6-47c0-b4be-1aa91fc5216d", "reason": "Ignorado: status != failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:26:20.556473+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-7924", "run_id": "35b6dadd-4141-4677-bfc2-ce291bc3a1bd", "error": "Checksum failed for file 'lib-1.0.jar'", "dependency": "numpy", "version": "2.31.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:26:35.589754+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-7721", "run_id": "96c1aac0-c209-427d-8586-657e4849481c", "error": "ReadTimeoutError: HTTPSConnectionPool(host='pypi.org', port=443): Read timed out.", "dependency": "pandas", "version": "3.12.1"}
+failure_detector    | {"@timestamp": "2026-05-26T04:26:50.552408+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-8508", "run_id": "c2f0b14b-bdee-4b37-be69-69a483a1d7f7", "error": "ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))", "dependency": "requests", "version": "0.110.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:27:05.557999+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-9126", "run_id": "f300484d-e73b-434e-af96-8692439a7b9f", "reason": "Ignorado: status != failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:27:20.603545+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-5006", "run_id": "e8db0de1-3e27-4680-af51-55a24a10f492", "error": "Checksum failed for file 'lib-1.0.jar'", "dependency": "numpy", "version": "2.31.0"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:30:20.531538+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-8850", "status": "failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:27:35.555730+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-9820", "run_id": "92ac150c-fade-4667-a715-51fe1c6b01b1", "error": "Could not find artifact org.example:lib:jar:1.0 in central", "dependency": "requests", "version": "3.12.1"}
+failure_solver      | {"@timestamp": "2026-05-26T04:26:38.745460+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-7721", "action": "increase_timeout_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:26:53.632279+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-8508", "action": "change_mirror_and_retry", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:30:35.532724+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-8022", "status": "failed"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:28:50.575059+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-6947", "category": "Checksum mismatch", "severity": "HIGH"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:30:50.531695+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-9227", "status": "success"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:29:05.584163+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-6049", "category": "404", "severity": "HIGH"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:29:35.575416+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-4341", "category": "404", "severity": "HIGH"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:29:50.593539+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-3694", "category": "Connection lost", "severity": "MEDIUM"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:30:05.571450+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-6815", "category": "Timeout", "severity": "MEDIUM"}
+failure_solver      | {"@timestamp": "2026-05-26T04:27:22.687902+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-5006", "action": "clean_cache_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:27:36.642654+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-9820", "action": "validate_dependency_and_fallback", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:28:08.648372+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-6453", "action": "change_mirror_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:28:23.663129+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-3959", "action": "change_mirror_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:28:38.664503+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-9634", "action": "change_mirror_and_retry", "status": "success"}
+failure_detector    | {"@timestamp": "2026-05-26T04:27:50.552387+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-5457", "run_id": "d7aaae38-fbcc-415d-8bf9-fa30b55a0306", "reason": "Ignorado: status != failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:28:05.556575+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-6453", "run_id": "236c878a-7d19-4fbc-8897-618e9888ecf8", "error": "Connection reset by peer", "dependency": "numpy", "version": "2.0.7"}
+failure_detector    | {"@timestamp": "2026-05-26T04:28:20.553117+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-3959", "run_id": "509326c9-7802-46d0-8d51-9eaf98f01570", "error": "npm ERR! network request to https://registry.npmjs.org/react failed, reason: socket hang up", "dependency": "requests", "version": "2.0.7"}
+failure_detector    | {"@timestamp": "2026-05-26T04:28:35.555943+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-9634", "run_id": "74b90bfa-9561-4a4f-9f45-c7ac709df02b", "error": "ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))", "dependency": "pika", "version": "0.110.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:28:50.553912+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-6947", "run_id": "ecad2e7f-d4dd-4af3-b327-d81bd20e46d7", "error": "Checksum failed for file 'lib-1.0.jar'", "dependency": "numpy", "version": "3.12.1"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:30:20.575614+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-8850", "category": "Checksum mismatch", "severity": "HIGH"}
+failure_detector    | {"@timestamp": "2026-05-26T04:29:05.554761+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-6049", "run_id": "136aa42f-d2c5-492e-ba05-666e6f05160d", "error": "Could not find artifact org.example:lib:jar:1.0 in central", "dependency": "pika", "version": "2.0.7"}
+failure_detector    | {"@timestamp": "2026-05-26T04:29:20.552276+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-9267", "run_id": "0673251c-f904-4909-aab5-7eff5c37ffee", "reason": "Ignorado: status != failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:29:35.553451+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-4341", "run_id": "0c7ce43f-fab5-4c2b-8331-eec8b3fe1b96", "error": "ERROR: Could not find a version that satisfies the requirement package-name (from versions: none)", "dependency": "requests", "version": "1.0.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:29:50.569727+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-3694", "run_id": "a7df918b-eb0e-4207-b9b9-527553630f65", "error": "Connection reset by peer", "dependency": "fastapi", "version": "1.0.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:30:05.553864+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-6815", "run_id": "2e34caef-de86-4545-b801-bddf18a25589", "error": "npm ERR! network timeout at: https://registry.npmjs.org/lodash", "dependency": "numpy", "version": "3.12.1"}
+failure_detector    | {"@timestamp": "2026-05-26T04:30:20.555817+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-8850", "run_id": "2dd9aadd-7040-411d-9c58-e90030687228", "error": "ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE.", "dependency": "numpy", "version": "2.0.7"}
+failure_detector    | {"@timestamp": "2026-05-26T04:30:35.552382+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-8022", "run_id": "305d3e1f-b280-4686-8aea-0d2d59790c18", "error": "Could not find artifact org.example:lib:jar:1.0 in central", "dependency": "requests", "version": "2.0.7"}
+failure_detector    | {"@timestamp": "2026-05-26T04:30:50.565223+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-9227", "run_id": "906a3eaf-1d30-4044-bdf0-dd3647ac8879", "reason": "Ignorado: status != failed"}
+failure_detector    | {"@timestamp": "2026-05-26T04:31:05.580345+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-3625", "run_id": "474426ed-3a7d-4d05-91ab-61739da46cb3", "error": "Connection reset by peer", "dependency": "requests", "version": "2.0.7"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:30:35.574006+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-8022", "category": "404", "severity": "HIGH"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:31:05.613259+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-3625", "category": "Connection lost", "severity": "MEDIUM"}
+failure_solver      | {"@timestamp": "2026-05-26T04:28:52.626103+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-6947", "action": "clean_cache_and_retry", "status": "success"}
+failure_detector    | {"@timestamp": "2026-05-26T04:31:20.561475+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-8444", "run_id": "2d5d2dd1-4968-48c3-90a9-c5160e56480d", "error": "Dependency convergence error for org.example:lib", "dependency": "numpy", "version": "2.0.7"}
+failure_detector    | {"@timestamp": "2026-05-26T04:31:35.562705+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-9076", "run_id": "29472582-7bf3-421e-964b-55a4ce30f9ab", "error": "ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))", "dependency": "numpy", "version": "3.12.1"}
+failure_detector    | {"@timestamp": "2026-05-26T04:31:50.568674+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-1623", "run_id": "75e5948a-d7fd-418c-995b-c96e20acaf5b", "error": "npm ERR! network timeout at: https://registry.npmjs.org/lodash", "dependency": "pika", "version": "1.0.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:32:04.375912+00:00", "level": "INFO", "service": "failure_detector", "message": "Fallo de dependencias detectado", "pipeline_id": "build-4719", "run_id": "550b6259-5a67-4769-8c3b-feef6ad338f2", "error": "npm ERR! ERESOLVE unable to resolve dependency tree", "dependency": "requests", "version": "2.31.0"}
+failure_detector    | {"@timestamp": "2026-05-26T04:32:05.799406+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-3111", "run_id": "4820450b-4eb8-4e73-a390-3b994493f6b2", "reason": "Ignorado: status != failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:31:05.533144+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-3625", "status": "failed"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:31:20.531851+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-8444", "status": "failed"}
+pipeline_simulator  | INFO:     172.18.0.1:59938 - "GET /health HTTP/1.1" 200 OK
+pipeline_simulator  | INFO:     172.18.0.1:59946 - "GET /health HTTP/1.1" 200 OK
+pipeline_simulator  | INFO:     172.18.0.1:59958 - "POST /simulate HTTP/1.1" 422 Unprocessable Entity
+pipeline_simulator  | INFO:     172.18.0.1:59962 - "POST /simulate HTTP/1.1" 422 Unprocessable Entity
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:31:35.536573+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-9076", "status": "failed"}
+failure_solver      | {"@timestamp": "2026-05-26T04:29:06.639113+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-6049", "action": "validate_dependency_and_fallback", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:29:36.628318+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-4341", "action": "validate_dependency_and_fallback", "status": "success"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:31:20.587531+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-8444", "category": "Version conflict", "severity": "HIGH"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:31:35.591357+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-9076", "category": "Connection lost", "severity": "MEDIUM"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:31:51.384445+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-1623", "category": "Timeout", "severity": "MEDIUM"}
+failure_classifier  | {"@timestamp": "2026-05-26T04:32:04.447845+00:00", "level": "INFO", "service": "failure_classifier", "message": "Fallo clasificado", "pipeline_id": "build-4719", "category": "Version conflict", "severity": "HIGH"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:31:50.535664+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-1623", "status": "failed"}
+pipeline_simulator  | /app/pipeline_simulator/app.py:167: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+failure_solver      | {"@timestamp": "2026-05-26T04:29:53.642994+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-3694", "action": "change_mirror_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:30:08.618213+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-6815", "action": "increase_timeout_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:30:22.631132+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-8850", "action": "clean_cache_and_retry", "status": "success"}
+pipeline_simulator  |   event = build_event(payload.dict(exclude_none=True))
+pipeline_simulator  | Pika version 1.3.2 connecting to ('172.18.0.5', 5672)
+pipeline_simulator  | Socket connected: <socket.socket fd=15, family=2, type=1, proto=6, laddr=('172.18.0.9', 43652), raddr=('172.18.0.5', 5672)>
+pipeline_simulator  | Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d762a3d0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d762a3d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>).
+failure_detector    | {"@timestamp": "2026-05-26T04:32:20.582642+00:00", "level": "INFO", "service": "failure_detector", "message": "Evento ignorado", "pipeline_id": "build-2641", "run_id": "6e81823f-b0e1-41aa-b8da-de1d442066e8", "reason": "Ignorado: status != failed"}
+pipeline_simulator  | AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d762a3d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+pipeline_simulator  | AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d762a3d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+pipeline_simulator  | Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d762a3d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+failure_solver      | {"@timestamp": "2026-05-26T04:30:36.637358+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-8022", "action": "validate_dependency_and_fallback", "status": "success"}
+pipeline_simulator  | Created channel=1
+failure_solver      | {"@timestamp": "2026-05-26T04:31:08.711313+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-3625", "action": "change_mirror_and_retry", "status": "success"}
+failure_solver      | {"@timestamp": "2026-05-26T04:31:21.644979+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-8444", "action": "finalize_pipeline", "status": "failed"}
+failure_solver      | {"@timestamp": "2026-05-26T04:31:38.700301+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-9076", "action": "change_mirror_and_retry", "status": "success"}
+pipeline_simulator  | Closing channel (0): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d762a3d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>>
+pipeline_simulator  | Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fa6d762a3d0> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>>
+pipeline_simulator  | Closing connection (200): Normal shutdown
+failure_solver      | {"@timestamp": "2026-05-26T04:31:54.514103+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-1623", "action": "increase_timeout_and_retry", "status": "success"}
+pipeline_simulator  | Closing connection (200): 'Normal shutdown'
+failure_solver      | {"@timestamp": "2026-05-26T04:32:05.517667+00:00", "level": "INFO", "service": "failure_solver", "message": "Remediaci├│n ejecutada", "pipeline_id": "build-4719", "action": "finalize_pipeline", "status": "failed"}
+pipeline_simulator  | Aborting transport connection: state=1; <socket.socket fd=15, family=2, type=1, proto=6, laddr=('172.18.0.9', 43652), raddr=('172.18.0.5', 5672)>
+pipeline_simulator  | _AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <socket.socket fd=15, family=2, type=1, proto=6, laddr=('172.18.0.9', 43652), raddr=('172.18.0.5', 5672)>
+pipeline_simulator  | Deactivating transport: state=1; <socket.socket fd=15, family=2, type=1, proto=6, laddr=('172.18.0.9', 43652), raddr=('172.18.0.5', 5672)>
+pipeline_simulator  | AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=ConnectionClosedByClient: (200) 'Normal shutdown'
+pipeline_simulator  | Stack terminated due to ConnectionClosedByClient: (200) 'Normal shutdown'
+pipeline_simulator  | Closing transport socket and unlinking: state=3; <socket.socket fd=15, family=2, type=1, proto=6, laddr=('172.18.0.9', 43652), raddr=('172.18.0.5', 5672)>
+pipeline_simulator  | User-initiated close: result=BlockingConnection__OnClosedArgs(connection=<SelectConnection CLOSED transport=None params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>, error=ConnectionClosedByClient: (200) 'Normal shutdown')
+pipeline_simulator  | INFO:     172.18.0.1:36852 - "POST /simulate HTTP/1.1" 200 OK
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:32:05.552149+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-3111", "status": "success"}
+pipeline_simulator  | {"@timestamp": "2026-05-26T04:32:20.550460+00:00", "level": "INFO", "service": "pipeline_simulator", "message": "Evento publicado", "routing_key": "pipeline.event", "pipeline_id": "build-2641", "status": "success"}

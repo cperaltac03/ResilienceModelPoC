@@ -1,8 +1,12 @@
-import json
 import os
-import time
 import random
+import threading
+import time
 from typing import Dict, Any
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
+import uvicorn
 
 from common.config import Settings
 from common.logging import ElasticLogger
@@ -17,6 +21,28 @@ OUT_ROUTING_KEY = "pipeline.event"
 INTERVAL = int(os.getenv("SIMULATOR_INTERVAL", "15"))
 REPO = os.getenv("SIM_REPO", "org/demo-repo")
 BRANCH = os.getenv("SIM_BRANCH", "main")
+SIMULATOR_HTTP_PORT = int(os.getenv("SIMULATOR_HTTP_PORT", "8001"))
+SIMULATOR_DISABLE_LOOP = os.getenv("SIMULATOR_DISABLE_LOOP", "false").lower() in ("1", "true", "yes")
+
+app = FastAPI(title="Pipeline Simulator", version="1.0.0")
+settings = Settings()
+
+
+class SimulationRequest(BaseModel):
+    repo: str | None = Field(None, description="Repository full name")
+    branch: str | None = Field(None, description="Branch name")
+    status: str | None = Field(None, description="Pipeline status: success or failed")
+    dependency: str | None = Field(None, description="Dependency name")
+    version: str | None = Field(None, description="Dependency version")
+    stage: str | None = Field(None, description="Pipeline stage")
+    pipeline_id: str | None = Field(None, description="Pipeline identifier")
+    run_id: str | None = Field(None, description="Run identifier")
+
+
+class SimulationResponse(BaseModel):
+    ok: bool
+    event: Dict[str, Any]
+
 
 
 def generate_event() -> Dict[str, Any]:
@@ -73,9 +99,28 @@ def generate_event() -> Dict[str, Any]:
     }
 
 
-def main() -> None:
-    settings = Settings()
+def build_event(overrides: Dict[str, Any] | None = None) -> Dict[str, Any]:
+    event = generate_event()
+    for key, value in (overrides or {}).items():
+        if value is not None:
+            event[key] = value
+    return event
 
+
+def publish_event(event: Dict[str, Any]) -> None:
+    mq = RabbitMQClient(settings)
+    mq.connect()
+    mq.channel.exchange_declare(exchange=settings.exchange_cicd, exchange_type="topic", durable=True)
+    mq.publish_json(
+        exchange=settings.exchange_cicd,
+        routing_key=OUT_ROUTING_KEY,
+        message=event,
+        persistent=True,
+    )
+    mq.close()
+
+
+def start_periodic_emitter() -> None:
     log = ElasticLogger(
         service=SERVICE,
         elastic_host=settings.elasticsearch_host,
@@ -84,11 +129,9 @@ def main() -> None:
 
     mq = RabbitMQClient(settings)
     mq.connect()
-
-    # Setup exchange
     mq.channel.exchange_declare(exchange=settings.exchange_cicd, exchange_type="topic", durable=True)
 
-    log.log("INFO", "Simulador iniciado", interval=INTERVAL)
+    log.log("INFO", "Simulador periódico iniciado", interval=INTERVAL)
 
     while True:
         evt = generate_event()
@@ -100,6 +143,34 @@ def main() -> None:
         )
         log.log("INFO", "Evento publicado", routing_key=OUT_ROUTING_KEY, pipeline_id=evt["pipeline_id"], status=evt["status"])
         time.sleep(INTERVAL)
+
+
+@app.on_event("startup")
+def startup_event() -> None:
+    if SIMULATOR_DISABLE_LOOP:
+        return
+
+    thread = threading.Thread(target=start_periodic_emitter, daemon=True)
+    thread.start()
+
+
+@app.get("/health")
+def health() -> Dict[str, Any]:
+    return {"status": "ok", "service": SERVICE, "http_port": SIMULATOR_HTTP_PORT}
+
+
+@app.post("/simulate", response_model=SimulationResponse)
+def simulate(payload: SimulationRequest) -> Dict[str, Any]:
+    if payload.status not in (None, "success", "failed"):
+        raise HTTPException(status_code=400, detail="status must be 'success' or 'failed'")
+
+    event = build_event(payload.dict(exclude_none=True))
+    publish_event(event)
+    return {"ok": True, "event": event}
+
+
+def main() -> None:
+    uvicorn.run(app, host="0.0.0.0", port=SIMULATOR_HTTP_PORT)
 
 
 if __name__ == "__main__":
