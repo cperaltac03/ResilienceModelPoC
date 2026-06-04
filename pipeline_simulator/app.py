@@ -35,6 +35,7 @@ class SimulationRequest(BaseModel):
     dependency: str | None = Field(None, description="Dependency name")
     version: str | None = Field(None, description="Dependency version")
     stage: str | None = Field(None, description="Pipeline stage")
+    error: str | None = Field(None, description="Pipeline error message used to drive deterministic recovery")
     pipeline_id: str | None = Field(None, description="Pipeline identifier")
     run_id: str | None = Field(None, description="Run identifier")
 
