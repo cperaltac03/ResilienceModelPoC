@@ -3,13 +3,13 @@ import os
 import time
 from typing import Dict, Any
 
-import pika
 import psycopg2
 
 from common.config import Settings
 from common.logging import ElasticLogger
 from common.messaging import RabbitMQClient, ConsumeSpec
 from common.events.schemas import utc_now, new_id
+from failure_solver.actions import clean_cache_action, dependency_substitution_action, retry_action
 
 SERVICE = "failure_solver"
 
@@ -53,54 +53,46 @@ def ensure_tables(conn):
     conn.commit()
 
 
-def execute_action(decision: Dict[str, Any]) -> Dict[str, Any]:
+def execute_action(decision: Dict[str, Any], pipeline_context: Dict[str, Any] | None = None) -> Dict[str, Any]:
     action = (decision or {}).get("action", "retry")
-    # Simulación de remediación (determinista / rule-based)
     if action == "retry":
-        attempts = int((decision or {}).get("max_attempts", 2))
-        backoff = int((decision or {}).get("backoff_seconds", 2))
-        time.sleep(min(3, backoff))
-        # Para prototipo: asumimos éxito en retry
-        return {"action": action, "attempts": attempts, "result": "success"}
+        return retry_action(decision)
 
     if action == "increase_timeout_and_retry":
-        attempts = int((decision or {}).get("max_attempts", 3))
-        backoff = int((decision or {}).get("backoff_seconds", 5))
-        time.sleep(min(3, backoff))
-        # Simular incrementar timeout y retry
-        return {"action": action, "attempts": attempts, "timeout_increased": True, "result": "success"}
+        return retry_action(decision, timeout_increased=True)
 
     if action == "change_mirror_and_retry":
-        attempts = int((decision or {}).get("max_attempts", 2))
-        backoff = int((decision or {}).get("backoff_seconds", 3))
-        time.sleep(min(3, backoff))
-        # Simular cambiar mirror y retry
-        return {"action": action, "attempts": attempts, "mirror_changed": True, "result": "success"}
+        return retry_action(decision, mirror_changed=True)
 
     if action == "validate_dependency_and_fallback":
         time.sleep(1)
-        # Simular validar dependencia y fallback
-        return {"action": action, "validated": True, "fallback_used": True, "result": "success"}
+        fallback = dependency_substitution_action({"action": "dependency_substitution"}, pipeline_context)
+        return {
+            "action": action,
+            "validated": True,
+            "fallback_used": True,
+            "fallback": fallback,
+            "result": "success",
+        }
 
     if action == "finalize_pipeline":
         time.sleep(1)
-        # Simular finalizar pipeline
-        return {"action": action, "pipeline_finalized": True, "result": "failed"}
+        return {
+            "action": action,
+            "pipeline_finalized": True,
+            "pipeline_id": (pipeline_context or {}).get("pipeline_id"),
+            "run_id": (pipeline_context or {}).get("run_id"),
+            "result": "failed",
+        }
 
     if action == "clean_cache_and_retry":
-        attempts = int((decision or {}).get("max_attempts", 1))
-        backoff = int((decision or {}).get("backoff_seconds", 2))
-        time.sleep(min(3, backoff))
-        # Simular limpiar cache y retry
-        return {"action": action, "attempts": attempts, "cache_cleaned": True, "result": "success"}
+        return clean_cache_action(decision)
 
     if action == "cache_clean":
-        time.sleep(1)
-        return {"action": action, "result": "success"}
+        return clean_cache_action(decision)
 
     if action == "dependency_substitution":
-        time.sleep(1)
-        return {"action": action, "substituted": True, "result": "success"}
+        return dependency_substitution_action(decision, pipeline_context)
 
     return {"action": action, "result": "no_op"}
 
@@ -142,7 +134,7 @@ def main() -> None:
     def on_message(payload: Dict[str, Any], routing_key: str) -> None:
         evt = payload
         decision = evt.get("decision", {})
-        outcome = execute_action(decision)
+        outcome = execute_action(decision, evt)
 
         result_status = outcome.get("result", "unknown")
         action_name = outcome.get("action", "unknown")

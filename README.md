@@ -4,6 +4,7 @@ This repository is a proof-of-concept event-driven resilience system for CI/CD p
 
 Contents
 - Overview: components and how they interact
+- How the PoC works: deterministic failure -> decision -> remediation path
 - Files: map of important code and config files
 - Run locally: how to start the stack and trigger the webhook
 - Develop & test: how to make changes and run unit / integration tests
@@ -17,6 +18,21 @@ Architecture overview
 - `failure_classifier` classifies failures and emits `failure.classified`.
 - `decision_engine` fetches rules from the rules manager and publishes `remediation.command` decisions.
 - `failure_solver` consumes `remediation.command`, executes remediation (simulated), stores results in Postgres (`remediation_actions`), and publishes `remediation.result`.
+
+How the PoC works (deterministic path)
+1. You trigger one failed pipeline run with `POST /simulate` in `pipeline_simulator`.
+2. `observability` transforms the event into the `resilience` exchange.
+3. `failure_detector` emits a `failure.detected` event for dependency-stage failures.
+4. `failure_classifier` maps the error text to a deterministic category/severity.
+5. `decision_engine` loads rules from `rules_manager` and selects the remediation action.
+6. `failure_solver` executes the selected action handler and emits `remediation.result`.
+7. `failure_solver` also persists the result in Postgres (`remediation_actions`).
+
+Deterministic mapping used in the demo
+- Timeout-like errors -> category `Timeout` -> action `increase_timeout_and_retry`
+- Connection reset/hang errors -> category `Connection lost` -> action `change_mirror_and_retry`
+- 404/not found errors -> category `404` -> action `validate_dependency_and_fallback`
+- Hash/checksum errors -> category `Checksum mismatch` -> action `clean_cache_and_retry`
 
 Important files
 - `docker-compose.yml` — service orchestration for local runs
@@ -47,13 +63,62 @@ curl http://localhost:8001/health
 ```powershell
 curl -X POST http://localhost:8001/simulate \
   -H "Content-Type: application/json" \
-  -d '{"status":"failed","dependency":"requests","version":"2.31.0"}'
+  -d '{"status":"failed","dependency":"requests","version":"2.31.0","error":"ReadTimeoutError: HTTPSConnectionPool(host=''pypi.org'', port=443): Read timed out."}'
 ```
+
+You can use the `error` field to force a specific recovery path. For example, a timeout-style error should flow to the `increase_timeout_and_retry` remediation rule.
 
 5. Verify remediation persistence in Postgres (example):
 
 ```powershell
 docker exec postgres psql -U resilience_user -d resilience -c "SELECT * FROM remediation_actions ORDER BY created_at DESC LIMIT 5;"
+```
+
+Run the deterministic PoC flow (recommended for demos)
+1. Start from a clean state.
+
+```powershell
+docker compose down -v
+```
+
+2. Start the stack with periodic simulation disabled so only your manual trigger is processed.
+
+```powershell
+$env:SIMULATOR_DISABLE_LOOP="true"
+docker compose up -d
+```
+
+3. Trigger one known failure path (timeout -> increase_timeout_and_retry).
+
+```powershell
+curl -X POST http://localhost:8001/simulate \
+  -H "Content-Type: application/json" \
+  -d '{"status":"failed","dependency":"requests","version":"2.31.0","error":"ReadTimeoutError: HTTPSConnectionPool(host=''pypi.org'', port=443): Read timed out."}'
+```
+
+4. Verify solver persistence for the selected action.
+
+```powershell
+docker exec postgres psql -U resilience_user -d resilience -c "SELECT action, status, details->>'pipeline_id' AS pipeline_id, created_at FROM remediation_actions ORDER BY created_at DESC LIMIT 5;"
+```
+
+Analyze PoC execution
+- Check action selection in the decision engine logs:
+
+```powershell
+docker compose logs decision_engine --tail=100
+```
+
+- Check action execution in the failure solver logs:
+
+```powershell
+docker compose logs failure_solver --tail=100
+```
+
+- Confirm end-to-end delivery with a strict SQL check for timeout recovery:
+
+```powershell
+docker exec postgres psql -U resilience_user -d resilience -c "SELECT count(*) AS timeout_recoveries FROM remediation_actions WHERE action = 'increase_timeout_and_retry' AND status = 'success';"
 ```
 
 Run only selected services (faster iteration)
@@ -66,21 +131,48 @@ docker compose up -d rabbitmq postgres rules_manager observability failure_detec
 
 Development and tests
 - Python packages for tests are listed in `requirements-test.txt`.
-- To run unit tests locally without Docker (fast):
 
+Test environment setup (local)
 ```powershell
-py -3.11 -m pip install -r requirements-test.txt
-py -3.11 -m pytest -q tests/test_failure_solver_action.py
+uv venv .venv
+uv pip install --python .venv\Scripts\python.exe -r requirements-test.txt
 ```
 
-- To run the repository FastAPI tests (no docker required):
+Run focused unit tests (fast):
 
 ```powershell
-py -3.11 -m pip install -r requirements-test.txt
-py -3.11 -m pytest -q tests/test_rules_manager_api.py tests/test_pipeline_simulator_webhook.py
+.\.venv\Scripts\python -m pytest -q tests/test_failure_solver_action.py
 ```
 
-- Full end-to-end integration tests require Docker Compose up and are executed by the CI workflow. Run pytest after bringing the stack up.
+Run webhook and recovery-flow tests (no Docker):
+
+```powershell
+.\.venv\Scripts\python -m pytest -q tests/test_pipeline_simulator_webhook.py tests/test_poc_recovery_flow.py
+```
+
+Run complete local test suite:
+
+```powershell
+.\.venv\Scripts\python -m pytest -q tests
+```
+
+How to analyze test results
+- `tests/test_pipeline_simulator_webhook.py`: validates webhook payload override and event publishing shape.
+- `tests/test_poc_recovery_flow.py`: validates deterministic chain (error text -> classification -> rule decision -> solver outcome).
+- `tests/test_failure_solver_action.py`: validates concrete action handlers (`retry`, `clean_cache`, `dependency_substitution`) and unknown-action fallback.
+- If tests fail, rerun with verbose output and stop at first failure:
+
+```powershell
+.\.venv\Scripts\python -m pytest -vv -x tests
+```
+
+- For failures involving running services, correlate pytest output with container logs:
+
+```powershell
+docker compose logs --tail=200 decision_engine failure_solver pipeline_simulator
+```
+
+Full end-to-end integration checks require Docker Compose up and are executed by CI/Jenkins (webhook trigger + Postgres remediation validation).
 
 Making changes
 - Add or modify rules: edit `rules_manager/rules.json` or use the API at `/rules` (see `rules_manager/app.py`).
@@ -93,7 +185,7 @@ docker compose up -d pipeline_simulator
 ```
 
 CI and Jenkins
-- GitHub Actions: see [.github/workflows/ci.yml](.github/workflows/ci.yml). The workflow starts the compose stack, waits for the simulator, runs pytest, triggers the webhook, and verifies remediation rows in Postgres.
+- GitHub Actions: see [.github/workflows/ci.yml](.github/workflows/ci.yml). The workflow starts the compose stack with the simulator loop disabled, waits for the simulator, runs pytest, triggers the timeout failure webhook, and verifies the `increase_timeout_and_retry` remediation row in Postgres.
 - Jenkins: see `Jenkinsfile` which mirrors the CI steps for Jenkins pipelines.
 
 Environment variables (not exhaustive)

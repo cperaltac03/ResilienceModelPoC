@@ -35,11 +35,17 @@ def test_simulate_event_with_override(monkeypatch):
 
     monkeypatch.setattr("pipeline_simulator.app.publish_event", fake_publish)
 
-    payload = {"status": "success", "dependency": "requests", "version": "2.31.0"}
+    payload = {
+        "status": "failed",
+        "dependency": "requests",
+        "version": "2.31.0",
+        "error": "ReadTimeoutError: HTTPSConnectionPool(host='pypi.org', port=443): Read timed out.",
+    }
     response = client.post("/simulate", json=payload)
     assert response.status_code == 200
     event = response.json()["event"]
-    assert event["status"] == "success"
+    assert event["status"] == "failed"
     assert event["dependency"] == "requests"
     assert event["version"] == "2.31.0"
+    assert event["error"].startswith("ReadTimeoutError")
     assert published[0]["pipeline_id"] == event["pipeline_id"]

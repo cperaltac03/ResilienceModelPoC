@@ -24,6 +24,8 @@ jobs:
 
       - name: Start Docker Compose
         run: docker compose up -d
+        env:
+          SIMULATOR_DISABLE_LOOP: 'true'
 
       - name: Wait for pipeline simulator endpoint
         run: |
@@ -50,19 +52,19 @@ jobs:
         run: |
           curl -sS -X POST http://localhost:8001/simulate \
             -H "Content-Type: application/json" \
-            -d '{"status":"failed","dependency":"requests","version":"2.31.0"}'
+            -d '{"status":"failed","dependency":"requests","version":"2.31.0","error":"ReadTimeoutError: HTTPSConnectionPool(host=''pypi.org'', port=443): Read timed out."}'
 
       - name: Wait for failure solver remediation row
         run: |
           for i in $(seq 1 20); do
-            row_count=$(docker exec postgres psql -U resilience_user -d resilience -tAc "SELECT count(*) FROM remediation_actions;" | tr -d '[:space:]')
+            row_count=$(docker exec postgres psql -U resilience_user -d resilience -tAc "SELECT count(*) FROM remediation_actions WHERE action = 'increase_timeout_and_retry' AND status = 'success';" | tr -d '[:space:]')
             if [ "$row_count" != "" ] && [ "$row_count" -ge 1 ]; then
-              echo "Remediation row present: $row_count"
+              echo "Timeout remediation row present: $row_count"
               exit 0
             fi
             sleep 3
           done
-          echo "No remediation row found in Postgres after webhook trigger" >&2
+          echo "No timeout remediation row found in Postgres after webhook trigger" >&2
           exit 1
 
       - name: Tear down Docker Compose
